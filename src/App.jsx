@@ -1,20 +1,38 @@
-import { useState } from 'react'
-import bookLogo from './assets/books.png'
+import { useState } from "react";
+import bookLogo from "./assets/books.png";
+import { Routes, Route } from "react-router-dom";
+import { Navigations, Books, SingleBook, Account, Login } from "./components";
 
 function App() {
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useState(null);
 
   return (
     <>
-      <h1><img id='logo-image' src={bookLogo}/>Library App</h1>
+      <h1>
+        <img id="logo-image" src={bookLogo} />
+        Library App
+      </h1>
 
-      <p>Complete the React components needed to allow users to browse a library catalog, check out books, review their account, and return books that they've finished reading.</p>
+      <Navigations />
 
-      <p>You may need to use the `token` in this top-level component in other components that need to know if a user has logged in or not.</p>
+      <Routes>
+        <Route path="/" element={<Books />}></Route>
+        <Route path="/account" element={<Account />}></Route>
+        <Route></Route>
+      </Routes>
 
-      <p>Don't forget to set up React Router to navigate between the different views of your single page application!</p>
+      {/* <p>
+        Complete the React components needed to allow users to browse a library
+        catalog, check out books, review their account, and return books that
+        they've finished reading.
+      </p>
+
+      <p>
+        You may need to use the `token` in this top-level component in other
+        components that need to know if a user has logged in or not.
+      </p> */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
