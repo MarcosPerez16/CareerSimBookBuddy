@@ -7,6 +7,7 @@ Users should be able to click on an individual book
 
 import { useState, useEffect } from "react";
 import { fetchBooks } from "../API";
+import { Link } from "react-router-dom";
 
 const Books = () => {
   // logic here
@@ -24,12 +25,16 @@ const Books = () => {
   return (
     <div>
       <h2 style={{ textAlign: "center" }}>Library Catalog</h2>
-      {books.map((book) => (
-        <div style={{ textAlign: "center" }} key={book.id}>
-          <h3>{book.title}</h3>
-          <p>Author: {book.author}</p>
-        </div>
-      ))}
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            {book.title}
+            {""}
+            <br />
+            <Link to={`/books/${book.id}`}>See Details</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

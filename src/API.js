@@ -4,7 +4,7 @@
 
 const APIURL = "https://fsa-book-buddy-b6e748d1380d.herokuapp.com";
 
-//fetch books
+//Fetch all books
 
 export const fetchBooks = async () => {
   const response = await fetch(`${APIURL}/api/books`, {
@@ -17,4 +17,17 @@ export const fetchBooks = async () => {
   console.log(data);
 
   return data.books;
+};
+
+//Fetch single book details
+
+export const fetchSingleBook = async (bookId) => {
+  const response = await fetch(`${APIURL}/api/books/${bookId}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.json();
+  console.log(data);
+  return data.book;
 };
