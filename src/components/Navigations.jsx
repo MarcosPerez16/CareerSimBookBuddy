@@ -6,7 +6,7 @@ for example 'Login' should be available if someone has not logged in yet. */
 // imports here
 import { Link, useNavigate } from "react-router-dom";
 
-const Navigations = ({token}) => {
+const Navigations = ({ token }) => {
   // logic here
 
   const navigate = useNavigate();

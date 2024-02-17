@@ -13,8 +13,8 @@ export const fetchBooks = async () => {
     },
   });
 
-  if(!response.ok){
-    throw new Error(`Error fetching books: ${response.statusText}`)
+  if (!response.ok) {
+    throw new Error(`Error fetching books: ${response.statusText}`);
   }
 
   const data = await response.json();
@@ -36,33 +36,51 @@ export const fetchSingleBook = async (bookId) => {
   return data.book;
 };
 
-
 //Function to fetch user details
 
-export const fetchUserDetails = async (token)=>{
-
+export const fetchUserDetails = async (token) => {
   try {
-      const response = await fetch(`${APIURL}/api/users/me`, {
-        method: "GET",
-        headers: {
-          "Content-Type" : "application/json",
-          "Authorization" : `Bearer ${token}`,
-        },
+    const response = await fetch(`${APIURL}/api/users/me`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-      });
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message);
+    }
 
-      if (!response.ok){
-        const errorData = await response.json();
-        throw new Error(errorData.message)
-      }
-
-      const userData = await response.json();
-      return userData;
-
+    const userData = await response.json();
+    return userData;
   } catch (error) {
-    throw new Error(`Failed to fetch user details: ${error.message}`)
+    throw new Error(`Failed to fetch user details: ${error.message}`);
   }
-
 };
 
+// Register new user function
 
+export const registerUser = async (userData) => {
+  try {
+    const response = await fetch(`${APIURL}/api/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify(userData),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message);
+    }
+
+    const registeredUserData = await response.json();
+    return registeredUserData;
+  } catch (error) {
+    throw new Error(`Failed to register user: ${error.message}`);
+  }
+};
