@@ -4,10 +4,12 @@ You may consider conditionally rendering some options -
 for example 'Login' should be available if someone has not logged in yet. */
 
 // imports here
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Navigations = () => {
+const Navigations = ({token}) => {
   // logic here
+
+  const navigate = useNavigate();
   return (
     <nav>
       <Link to={"/"}>Books</Link>

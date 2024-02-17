@@ -1,7 +1,7 @@
 import { useState } from "react";
 import bookLogo from "./assets/books.png";
 import { Routes, Route } from "react-router-dom";
-import { Navigations, Books, SingleBook, Account, Login } from "./components";
+import { Navigations, Books, SingleBook, Account, Login, Register } from "./components";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -13,13 +13,14 @@ function App() {
         Library App
       </h1>
 
-      <Navigations />
+      <Navigations token={token}/>
 
       <Routes>
         <Route path="/" element={<Books />}></Route>
         <Route path="books/:id" element={<SingleBook />}></Route>
-        <Route path="/account" element={<Account />}></Route>
-        <Route></Route>
+        <Route path="/account" element={<Account token={token} />}></Route>
+        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/register" element={<Register/>}></Route>
       </Routes>
 
       {/* <p>
