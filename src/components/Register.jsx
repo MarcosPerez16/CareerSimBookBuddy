@@ -52,7 +52,7 @@ const Register = () => {
       />
 
       <button onClick={handleRegister}>Register</button>
-      {error && <p>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };

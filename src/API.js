@@ -84,3 +84,27 @@ export const registerUser = async (userData) => {
     throw new Error(`Failed to register user: ${error.message}`);
   }
 };
+
+//Log in user function
+
+export const loginUser = async ({ email, password }) => {
+  try {
+    const response = await fetch(`${APIURL}/api/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message);
+    }
+
+    const userData = await response.json();
+    return userData;
+  } catch (error) {
+    throw new Error(`Login failed: ${error.message}`);
+  }
+};
