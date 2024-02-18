@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import { fetchUserDetails } from "../API";
+import CheckoutBook from "./CheckoutBook";
 
 // imports here
 const Account = ({ token, setToken }) => {
@@ -56,6 +57,9 @@ const Account = ({ token, setToken }) => {
           </h3>
           <p>Email: {userDetails.email}</p>
           {/*can add more details as needed */}
+
+          {/* Display CheckoutBook only when the user is logged in */}
+          <CheckoutBook token={token} />
         </>
       ) : (
         <p>Please log in to view your account details.</p>

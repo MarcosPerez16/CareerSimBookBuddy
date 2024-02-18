@@ -108,3 +108,80 @@ export const loginUser = async ({ email, password }) => {
     throw new Error(`Login failed: ${error.message}`);
   }
 };
+
+//Checkout a book function
+
+export const checkoutBook = async (token, bookId) => {
+  try {
+    const response = await fetch(`${APIURL}/api/books/${bookId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        available: false,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message);
+    }
+
+    const checkedOutBook = await response.json();
+    return checkedOutBook;
+  } catch (error) {
+    throw new Error(`Failed to checkout book: ${error.message}`);
+  }
+};
+
+//Return a book function
+
+export const returnBook = async (token, bookId) => {
+  try {
+    const response = await fetch(`${APIURL}/api/books/${bookId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        available: true,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message);
+    }
+
+    const returnedBook = await response.json();
+    return returnedBook;
+  } catch (error) {
+    throw new Error(`Failed to return book: ${error.message}`);
+  }
+};
+
+//Fetch checked out books by user
+
+export const fetchCheckedOutBooks = async (token) => {
+  try {
+    const response = await fetch(`${APIURL}/api/reservations`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message);
+    }
+
+    const checkedOutBooks = await response.json();
+    return checkedOutBooks;
+  } catch (error) {
+    throw new Error(`Failed to fetch checked-out books: ${error.message}`);
+  }
+};
