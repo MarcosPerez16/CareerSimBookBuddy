@@ -10,17 +10,24 @@ const Register = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleRegister = async () => {
     try {
-      if (!email || !password) {
-        setError("You must enter both an email and password!");
+      if (!email || !password || !firstname || !lastname) {
+        setError("Please fill in all fields");
         return;
       }
 
-      const userData = await registerUser({ email, password });
+      const userData = await registerUser({
+        email,
+        password,
+        firstname,
+        lastname,
+      });
       console.log("User registered successfully:", userData);
 
       //redirect the registered user to login page
@@ -49,6 +56,20 @@ const Register = () => {
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <label>First Name:</label>
+      <input
+        type="text"
+        value={firstname}
+        onChange={(e) => setFirstname(e.target.value)}
+      />
+
+      <label>Last Name:</label>
+      <input
+        type="text"
+        value={lastname}
+        onChange={(e) => setLastname(e.target.value)}
       />
 
       <button onClick={handleRegister}>Register</button>

@@ -4,13 +4,14 @@
 
 import { useState } from "react";
 import { loginUser } from "../API";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ token, setToken }) => {
   // logic here
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [token, setToken] = useState(null);
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -25,6 +26,9 @@ const Login = () => {
       const userData = await loginUser({ email, password });
       //successful login
       console.log("User logged in successfully:", userData);
+
+      //after successful login navigate to account page
+      navigate("/account");
 
       //save users token to state
       setToken(userData.token);

@@ -11,13 +11,12 @@ import Register from "./Register";
 import { fetchUserDetails } from "../API";
 
 // imports here
-const Account = ({ token }) => {
+const Account = ({ token, setToken }) => {
   // logic here
 
   const [userDetails, setUserDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -52,20 +51,14 @@ const Account = ({ token }) => {
       {/* Your existing account details rendering goes here */}
       {userDetails ? (
         <>
-          <h3>Welcome, {userDetails.firstname}!</h3>
+          <h3>
+            Welcome, {userDetails.firstname} {userDetails.lastname}!
+          </h3>
           <p>Email: {userDetails.email}</p>
           {/*can add more details as needed */}
         </>
       ) : (
         <p>Please log in to view your account details.</p>
-      )}
-
-      {/* Conditionally render Login/Register links based on user's state */}
-      {!userDetails && (
-        <div>
-          <button onClick={() => navigate("/login")}>Login</button>
-          <button onClick={() => navigate("/register")}>Register</button>
-        </div>
       )}
     </div>
   );

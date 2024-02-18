@@ -12,8 +12,13 @@ const Navigations = ({ token }) => {
   const navigate = useNavigate();
   return (
     <nav>
-      <Link to={"/"}>Books</Link>
-      <Link to={"/account"}>Account</Link>
+      <Link to="/">Books</Link>
+
+      <Link to="/login">Login</Link>
+
+      <Link to="/register">Register</Link>
+
+      <Link to="/account">Account</Link>
     </nav>
   );
 };
