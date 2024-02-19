@@ -140,6 +140,7 @@ export const checkoutBook = async (token, bookId) => {
 
 export const returnBook = async (token, bookId) => {
   try {
+    console.log("Returning book with ID:", bookId);
     const response = await fetch(`${APIURL}/api/books/${bookId}`, {
       method: "PATCH",
       headers: {
@@ -151,13 +152,14 @@ export const returnBook = async (token, bookId) => {
       }),
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message);
+      console.error("API Error:", response.status, data);
+      throw new Error(data.message || "Return failed");
     }
 
-    const returnedBook = await response.json();
-    return returnedBook;
+    return data;
   } catch (error) {
     throw new Error(`Failed to return book: ${error.message}`);
   }

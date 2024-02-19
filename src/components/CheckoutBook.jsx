@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { fetchBooks, checkoutBook } from "../API";
 
-const CheckoutBook = ({ token }) => {
+const CheckoutBook = ({ token, handleCheckout }) => {
   // logic here
   const [availableBooks, setAvailableBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
@@ -20,14 +20,14 @@ const CheckoutBook = ({ token }) => {
     fetchAvailableBooks();
   }, []);
 
-  const handleCheckout = async () => {
+  const handleCheckoutClick = async () => {
     if (!selectedBook) {
       console.error("Please select a book to checkout");
       return;
     }
 
     try {
-      await checkoutBook(token, selectedBook.id);
+      await handleCheckout(selectedBook.id);
       //update checkout state
       setCheckoutSuccess(true);
 
@@ -52,7 +52,7 @@ const CheckoutBook = ({ token }) => {
           </option>
         ))}
       </select>
-      <button onClick={handleCheckout}>Checkout</button>
+      <button onClick={handleCheckoutClick}>Checkout</button>
     </div>
   );
 };

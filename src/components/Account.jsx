@@ -10,6 +10,7 @@ import Login from "./Login";
 import Register from "./Register";
 import { fetchUserDetails } from "../API";
 import CheckoutBook from "./CheckoutBook";
+import ReturnBook from "./ReturnBook";
 
 // imports here
 const Account = ({ token, setToken }) => {
@@ -56,10 +57,9 @@ const Account = ({ token, setToken }) => {
             Welcome, {userDetails.firstname} {userDetails.lastname}!
           </h3>
           <p>Email: {userDetails.email}</p>
-          {/*can add more details as needed */}
 
           {/* Display CheckoutBook only when the user is logged in */}
-          <CheckoutBook token={token} />
+          {token && <ReturnBook token={token} />}
         </>
       ) : (
         <p>Please log in to view your account details.</p>
