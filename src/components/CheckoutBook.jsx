@@ -30,21 +30,25 @@ const CheckoutBook = ({ token, handleCheckout }) => {
       await handleCheckout(selectedBook.id);
       //update checkout state
       setCheckoutSuccess(true);
-
-      console.log(`Book "${selectedBook.title}" checked out successfully!`);
     } catch (error) {
       console.error("Checkout failed:", error.message);
     }
   };
 
   return (
-    <div>
-      <h2>Checkout Book</h2>
+    <div className="checkout-container">
+      <h2 className="checkout-title">Checkout Book</h2>
+
       {checkoutSuccess && (
-        <p style={{ color: "blue" }}>Book successfully checked out!</p>
+        <p className="checkout-success">Book successfully checked out!</p>
       )}
-      <p>Select a book to checkout:</p>
-      <select onChange={(e) => setSelectedBook(JSON.parse(e.target.value))}>
+
+      <p className="checkout-label">Select a book to checkout:</p>
+
+      <select
+        className="book-select"
+        onChange={(e) => setSelectedBook(JSON.parse(e.target.value))}
+      >
         <option value="">Select a book</option>
         {availableBooks.map((book) => (
           <option key={book.id} value={JSON.stringify(book)}>
@@ -52,7 +56,10 @@ const CheckoutBook = ({ token, handleCheckout }) => {
           </option>
         ))}
       </select>
-      <button onClick={handleCheckoutClick}>Checkout</button>
+
+      <button className="checkout-button" onClick={handleCheckoutClick}>
+        Checkout
+      </button>
     </div>
   );
 };

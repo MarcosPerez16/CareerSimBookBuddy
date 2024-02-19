@@ -18,7 +18,7 @@ const ReturnBook = ({ token }) => {
     const fetchBooks = async () => {
       try {
         const { reservation: books } = await fetchCheckedOutBooks(token);
-        console.log("checked out books:", books);
+
         setCheckedOutBooks(books);
       } catch (error) {
         console.error("Error fetching checked-out books:", error.message);
@@ -32,7 +32,6 @@ const ReturnBook = ({ token }) => {
 
   //handle return function
   const handleReturn = async (bookId) => {
-    console.log("Returning book with ID:", bookId);
     try {
       await returnBook(token, bookId);
 
@@ -40,9 +39,6 @@ const ReturnBook = ({ token }) => {
       setCheckedOutBooks((prevBooks) =>
         prevBooks.filter((book) => book.id !== bookId)
       );
-
-      // Optionally, provide feedback to the user (e.g., display a success message)
-      console.log("Book returned successfully");
     } catch (error) {
       console.error("Return failed: ", error.message);
     }
@@ -56,27 +52,28 @@ const ReturnBook = ({ token }) => {
       //fetch and update list of checked out books after checkout
       const { reservation: books } = await fetchCheckedOutBooks(token);
       setCheckedOutBooks(books);
-
-      console.log("Book checked out successfully");
     } catch (error) {
       console.error("Checkout failed:", error.message);
     }
   };
 
   return (
-    <div>
-      <h2>Return Book</h2>
-      <p>Books currently checked out:</p>
-      <ul>
+    <div className="return-book-container">
+      <h2>Checked out Books/Return Book</h2>
+      <ul className="book-list">
         {checkedOutBooks.map((book) => (
-          <li key={book.id}>
+          <li key={book.id} className="book-list-item">
             {book.title} by {book.author}
-            <button onClick={() => handleReturn(book.id)}>Return</button>
+            <button
+              className="return-button"
+              onClick={() => handleReturn(book.id)}
+            >
+              Return
+            </button>
           </li>
         ))}
       </ul>
 
-      {/* Include Checkout functionality here */}
       <CheckoutBook token={token} handleCheckout={handleCheckout} />
     </div>
   );

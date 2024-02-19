@@ -12,13 +12,21 @@ const Navigations = ({ token }) => {
   const navigate = useNavigate();
   return (
     <nav>
-      <Link to="/">Books</Link>
+      <Link to="/">
+        <span className="material-icons">home</span> Books
+      </Link>
 
-      <Link to="/login">Login</Link>
+      <Link to="/login">
+        <span className="material-icons">login</span> Login
+      </Link>
 
-      <Link to="/register">Register</Link>
+      <Link to="/register">
+        <span className="material-icons">app_registration</span> Register
+      </Link>
 
-      <Link to="/account">Account</Link>
+      <Link to="/account">
+        <span className="material-icons">account_box</span> Account
+      </Link>
     </nav>
   );
 };

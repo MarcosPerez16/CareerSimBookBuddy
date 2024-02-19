@@ -18,7 +18,6 @@ export const fetchBooks = async () => {
   }
 
   const data = await response.json();
-  console.log(data);
 
   return data.books;
 };
@@ -32,7 +31,7 @@ export const fetchSingleBook = async (bookId) => {
     },
   });
   const data = await response.json();
-  console.log(data);
+
   return data.book;
 };
 
@@ -140,7 +139,6 @@ export const checkoutBook = async (token, bookId) => {
 
 export const returnBook = async (token, bookId) => {
   try {
-    console.log("Returning book with ID:", bookId);
     const response = await fetch(`${APIURL}/api/books/${bookId}`, {
       method: "PATCH",
       headers: {

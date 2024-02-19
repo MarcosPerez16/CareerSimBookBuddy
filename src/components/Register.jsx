@@ -28,7 +28,6 @@ const Register = () => {
         firstname,
         lastname,
       });
-      console.log("User registered successfully:", userData);
 
       //redirect the registered user to login page
       navigate("/login");
@@ -42,7 +41,8 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="register-container">
+      {" "}
       <h2>Register</h2>
       <label>Email:</label>
       <input
@@ -50,30 +50,26 @@ const Register = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-
       <label>Password:</label>
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-
       <label>First Name:</label>
       <input
         type="text"
         value={firstname}
         onChange={(e) => setFirstname(e.target.value)}
       />
-
       <label>Last Name:</label>
       <input
         type="text"
         value={lastname}
         onChange={(e) => setLastname(e.target.value)}
       />
-
       <button onClick={handleRegister}>Register</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p>{error}</p>}
     </div>
   );
 };

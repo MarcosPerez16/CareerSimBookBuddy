@@ -25,7 +25,6 @@ const Login = ({ token, setToken }) => {
 
       const userData = await loginUser({ email, password });
       //successful login
-      console.log("User logged in successfully:", userData);
 
       //after successful login navigate to account page
       navigate("/account");
@@ -39,7 +38,8 @@ const Login = ({ token, setToken }) => {
   };
 
   return (
-    <div>
+    <div className="login-container">
+      {" "}
       <h2>Login</h2>
       <label>Email:</label>
       <input
@@ -47,7 +47,6 @@ const Login = ({ token, setToken }) => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-
       <label>Password:</label>
       <input
         type="password"
@@ -55,9 +54,7 @@ const Login = ({ token, setToken }) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
-
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-
+      {errorMessage && <p>{errorMessage}</p>}
       {token && <p>User token: {token}</p>}
     </div>
   );

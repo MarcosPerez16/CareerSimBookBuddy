@@ -13,6 +13,7 @@ const Books = () => {
   // logic here
 
   const [books, setBooks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const getBooksList = async () => {
@@ -22,16 +23,29 @@ const Books = () => {
     getBooksList();
   }, []);
 
+  const filteredBooks = books.filter((book) =>
+    book.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div>
-      <h2 style={{ textAlign: "center" }}>Library Catalog</h2>
-      <ul>
-        {books.map((book) => (
-          <li key={book.id}>
+    <div className="books-container">
+      <h2 className="catalog-title">Library Catalog</h2>
+
+      <input
+        type="text"
+        placeholder="Search books"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-input"
+      />
+      <ul className="books-list">
+        {filteredBooks.map((book) => (
+          <li key={book.id} className="book-item">
             {book.title}
-            {""}
             <br />
-            <Link to={`/books/${book.id}`}>See Details</Link>
+            <Link to={`/books/${book.id}`} className="details-link">
+              See Details
+            </Link>
           </li>
         ))}
       </ul>

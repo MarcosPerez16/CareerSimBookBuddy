@@ -48,21 +48,23 @@ const Account = ({ token, setToken }) => {
   }
 
   return (
-    <div>
-      <h2>Account Details</h2>
-      {/* Your existing account details rendering goes here */}
+    <div className="account-container">
+      <h2 className="account-details-title">Account Details</h2>
+
       {userDetails ? (
         <>
-          <h3>
+          <h3 className="welcome-message">
             Welcome, {userDetails.firstname} {userDetails.lastname}!
           </h3>
-          <p>Email: {userDetails.email}</p>
+          <p className="email-text">Email: {userDetails.email}</p>
 
           {/* Display CheckoutBook only when the user is logged in */}
           {token && <ReturnBook token={token} />}
         </>
       ) : (
-        <p>Please log in to view your account details.</p>
+        <p className="login-prompt">
+          Please log in to view your account details.
+        </p>
       )}
     </div>
   );

@@ -21,17 +21,29 @@ const SingleBook = () => {
   }, [id]);
 
   return (
-    <div>
-      <h2>This will show the details of a single book</h2>
+    <div className="single-book-container">
+      <h2>Book Details</h2>
 
-      <p>ID: {book.id}</p>
-      <p>Title: {book.title}</p>
-      <p>Author: {book.author}</p>
-      <p>Description: {book.description}</p>
       <p>
-        Cover Image: <img src={book.coverimage} alt={book.title} />
+        <span style={{ color: "blue" }}>ID:</span> {book.id}
       </p>
-      <p>Availability: {book.available ? "Available" : "Checked Out"}</p>
+      <p>
+        <span style={{ color: "green" }}>Title:</span> {book.title}
+      </p>
+      <p>
+        <span style={{ color: "red" }}>Author:</span> {book.author}
+      </p>
+      <p>
+        <span style={{ color: "purple" }}>Description:</span> {book.description}
+      </p>
+
+      <p>
+        <img src={book.coverimage} alt={book.title} />
+      </p>
+      <p>
+        <span style={{ color: "red" }}>Availability:</span>{" "}
+        {book.available ? "Available" : "Checked Out"}
+      </p>
     </div>
   );
 };

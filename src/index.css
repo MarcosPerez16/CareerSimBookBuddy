@@ -1,6 +1,6 @@
 body {
   font-family: Georgia, serif;
-  background-color: #f8f8f8;
+  background-color: #ffd699;
   margin: 0;
   padding: 0;
 }
@@ -11,3 +11,325 @@ body {
 }
 
 /* Add your own custom styles here */
+
+/* Books Component styles */
+
+.books-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.catalog-title {
+  text-align: center;
+  color: #333;
+}
+
+.search-input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.books-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.book-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #e0e8f0;
+  transition: background-color 0.3s ease;
+}
+
+.book-item:hover {
+  background-color: #f0f0f0;
+}
+
+.details-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* NAV BAR STYLES */
+
+nav {
+  background-color: #333;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px;
+  transition: color 0.3s ease;
+  align-items: center;
+  display: flex;
+}
+
+nav a span {
+  margin-right: 5px;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+/* Login styles */
+
+.login-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.login-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.login-container label {
+  display: block;
+  margin: 10px 0;
+  color: #333;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.login-container button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-container button:hover {
+  background-color: #0056b3;
+}
+
+.login-container p {
+  color: red;
+}
+
+/* Register styles  */
+
+.register-container {
+  max-width: 400px;
+  margin: 20px auto;
+
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #fffff0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.register-container input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.register-container button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.register-container button:hover {
+  background-color: #0056b3;
+}
+
+.register-container p {
+  color: red;
+}
+
+/* Account Styles */
+
+.account-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f5f5dc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.account-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.account-container h3 {
+  color: #007bff;
+}
+
+.account-container p {
+  margin-bottom: 10px;
+}
+
+.account-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.account-container li {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.account-container li:hover {
+  background-color: #f0f0f0;
+}
+
+.account-container button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.account-container button:hover {
+  background-color: #0056b3;
+}
+
+.account-container .loading {
+  text-align: center;
+  color: #007bff;
+}
+
+/* styles single book component */
+
+.single-book-container {
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Style for the book details */
+.single-book-container h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.single-book-container p {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.single-book-container img {
+  max-width: 100%;
+  max-height: 200px; /* Adjust the max-height as needed */
+  height: auto;
+}
+
+/* Style for the checkout */
+
+.checkout-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.checkout-title {
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+
+.checkout-success {
+  color: green;
+  margin-bottom: 10px;
+}
+
+.checkout-label {
+  margin-bottom: 10px;
+}
+
+.book-select {
+  margin-bottom: 10px;
+}
+
+.checkout-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* styles for return book */
+
+.return-book-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.return-book-container h2 {
+  text-decoration: underline;
+}
+
+.book-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.book-list li {
+  margin-bottom: 10px;
+}
+
+.book-list li button {
+  margin-left: 30px;
+}
+
+/* Account styles */
+
+.account-container {
+  text-align: center;
+  border: 2px solid #007bff;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.account-details-title {
+  text-decoration: underline;
+}
+
+.welcome-message {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.email-text {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.login-prompt {
+  text-align: center;
+}
