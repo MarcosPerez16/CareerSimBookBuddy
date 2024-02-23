@@ -18,6 +18,7 @@ export const fetchBooks = async () => {
   }
 
   const data = await response.json();
+  console.log(data);
 
   return data.books;
 };
@@ -152,9 +153,15 @@ export const returnBook = async (token, bookId) => {
 
     const data = await response.json();
 
+    if (response.status === 500) {
+      console.error("Internal Server Error:", response.status, data);
+      throw new Error("Internal Service Error");
+    }
+
     if (!response.ok) {
-      console.error("API Error:", response.status, data);
-      throw new Error(data.message || "Return failed");
+      const error = await response.json();
+      console.error("Return failed:", error);
+      throw new Error(`Failed to return book: ${error.message}`);
     }
 
     return data;

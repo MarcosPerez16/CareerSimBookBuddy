@@ -1,12 +1,7 @@
 // imports here
 
 import { useState, useEffect } from "react";
-import {
-  checkoutBook,
-  fetchBooks,
-  fetchCheckedOutBooks,
-  returnBook,
-} from "../API";
+import { checkoutBook, fetchCheckedOutBooks, returnBook } from "../API";
 import CheckoutBook from "./CheckoutBook";
 
 const ReturnBook = ({ token }) => {
@@ -15,7 +10,7 @@ const ReturnBook = ({ token }) => {
   const [checkedOutBooks, setCheckedOutBooks] = useState([]);
 
   useEffect(() => {
-    const fetchBooks = async () => {
+    const fetchCheckedOutBooksData = async () => {
       try {
         const { reservation: books } = await fetchCheckedOutBooks(token);
 
@@ -26,12 +21,14 @@ const ReturnBook = ({ token }) => {
     };
 
     if (token) {
-      fetchBooks();
+      fetchCheckedOutBooksData();
     }
   }, [token]);
 
   //handle return function
   const handleReturn = async (bookId) => {
+    console.log("Book ID to be returned:", bookId);
+
     try {
       await returnBook(token, bookId);
 
